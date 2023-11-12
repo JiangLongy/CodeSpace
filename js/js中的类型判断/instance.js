@@ -19,3 +19,5 @@ console.log(fn instanceof Function);
 console.log(date instanceof Date);//instanceof 可以判断所有引用类型
 console.log(str instanceof String);//false instanceof 无法判断原始类型
 console.log(arr instanceof Object);//true 
+
+console.log(arr instanceof Object);
