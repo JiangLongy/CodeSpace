@@ -12,6 +12,6 @@ let map = new Map()
 let obj ={a:1}
 map.set(obj,'hello')
 console.log(map.get(obj));
-map.forEach((item,index,set)=>{
-    console.log(item,index,set);
+map.forEach((value,key,map)=>{
+    console.log(value,key,map);
  })

@@ -13,11 +13,11 @@ function unique(arr){
     // return res
     return[...new Set(arr)]
 }
-//var unique = (arr) => [...new Set(arr)]
-// console.log(unique(arr2));
-// set.forEach((item,index,set)=>{
-//     console.log(item,index,set);
-// })
+var unique = (arr) => [...new Set(arr)]
+console.log(unique(arr2));
+set.forEach((item,index,set)=>{
+    console.log(item,index,set);
+})
 for(let item of set){
     console.log(item);
 }
