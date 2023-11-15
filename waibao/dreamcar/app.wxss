@@ -1,4 +1,11 @@
-.hero{
-  background: green;
-  color: white;
+/* 模块化划分 */
+@import"styles/reset.wxss";
+@import"styles/hero.wxss";
+@import"styles/action.wxss";
+@import"styles/button.wxss";
+Page{
+  background: honeydew;
+}
+.section{
+  height: 100vh;
 }

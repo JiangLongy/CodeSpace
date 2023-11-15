@@ -1,0 +1,14 @@
+.button{
+  display: inline-block;
+  margin: 8rpx;
+  background: cornsilk;
+  color: black;
+  font-weight: bold;
+  border-radius: 1px;
+  font-size: 32rpx;
+  transition: .3s all;
+}
+.button.primary{
+  background-color: black;
+  color: azure;
+}

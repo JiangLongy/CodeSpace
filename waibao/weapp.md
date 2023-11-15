@@ -48,7 +48,8 @@
             一行或者几行css形成了一个功能模块
             .sub-header{副标题
                 font-size:;
-                
+                line-height:;
+                font-family:;
             }
         - 慢慢积累经验
 
