@@ -1,0 +1,102 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.music__head{
+    position: relative;
+    height: 303px;
+    overflow: auto;
+}
+.music__head .bg{
+    width: 100%;
+    height: 303px;
+    background: url( https://img1.baidu.com/it/u=3239526106,1988498974&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=330);
+    background-size: 100% 100%;
+    filter: blur(10px);/*虚化*/
+    position: absolute;
+     z-index: -1;/*图层置为最底层 */
+}
+.music__head-title{
+    margin: 45px 0;
+    color: aliceblue;
+    padding: 0 40px;
+}
+.back{
+    float: left;
+    
+}
+.title{
+    text-align: center;
+    font-size: 12px;
+}
+.music__body{
+    position: absolute;
+    top: 130px;
+    width: 100%;
+    height: calc(100vh - 130px);
+    background-color: #fff;
+    border-top-right-radius: 32px;
+    border-top-left-radius: 32px;
+}
+.body-pic{
+    width: 257px;
+    height: 283px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 40px;
+    position: absolute;
+    left:50%;
+    transform: translateX(-50%);
+    top:-39px;
+    box-shadow: 0 0 20px #aaa;
+}
+.body-pic img{
+    height: 100%;
+
+}
+.body-desc{
+    margin-top: 280px;
+    text-align: center;
+    font-size: 20px;
+    font-family: '隶书';
+}
+.body-desc .author{
+    font-size: 15px;
+}
+.body-line{
+    width: 280px;
+    height: 2px;
+    margin: 0 auto;
+    margin-top: 50px;
+    background-color: #aaa;
+    overflow: hidden;
+}
+
+.body-linein{
+    width: 100%;
+    height: 100%;
+    
+    transform: translateX(-50%);
+    background-color: red;
+}
+.body-play{
+    width: 280px;
+    height: 100px;
+    margin: 0 auto;
+}
+.body-playpic{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 50px auto;
+}
+ 
+.iconfont {
+    font-size: 20px;
+}
+.icon-bofang.icon-bofang  {
+    color: red;
+    font-size: 30px;
+}
