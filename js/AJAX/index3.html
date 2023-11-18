@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">新歌速递</button>
+    <ul id="ul">
+        
+    </ul>
+    <!-- <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.min.js"></script> -->
+    <script>
+        const btn = document.getElementById('btn');
+        btn.addEventListener('click',()=>{
+            //朝网易云服务器上的后端代码发一个http请求
+          fetch('http://192.168.31.45:3000/top/song?type=7')
+          .then(data =>data.json())
+            //json()格式化对象
+            // console.log(data.json());
+          .then(res =>{
+            console.log(res);
+          })
+        })
+    </script>
+</body>
+</html>

@@ -1,5 +1,5 @@
-function a(cb) {
-    setTimeout (() => {
+function a() {
+    setTimeout ((cb) => {
         console.log('阿珍')
         cb()
     },1000);

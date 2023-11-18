@@ -1,0 +1,10 @@
+.cover{
+  position: relative;
+}
+.cover image{
+  height: 38.2vh;
+}
+.cover .content{
+  position:absolute;
+  bottom: 0;
+}
