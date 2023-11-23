@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //js强大的表现力 语言精粹 对象
+        //对象字面量
+        const lj={
+            name:"茳",//key value
+            age: 21,
+            hometown:'吉安',
+            isSingle: false
+        }
+        const yjl={
+            name:"丽",//key value
+            age: 21,
+            hometown:'四川',
+            isSingle: false,
+            sendFlower(receiver){
+                // console.log(this);//对象方法内部this指向本身
+                receiver.receiveFlower(this);
+            }
+        }
+        //复杂 面向对象要能搞定 设计模式
+        const xm={
+            name:'美',//key value
+            emotion: 50,
+            receiveFlower(sender){
+                // es6代码更优雅 字符串模板
+                console.log(`${this.name}收到${sender.name}的花`);
+                 //命令式代码 low
+                // console.log('收到'+sender.name +'的花');
+                if(this.emotion < 80){
+                    console.log('我没心情');
+                }else{
+                    console.log('走起');
+                }
+            }
+        }
+        //代理模式
+        const xh = {
+            name:'小红',
+            hometown:'南昌',
+            // 接口 interface 
+            receiveFlower(sender){
+            //   if(sender.name == '丽'){
+            //     console.log('在一起');
+            //   }
+            if(xm.emotion>=80){
+                xm.receiveFlower(sender)
+            }else{
+                setTimeout(()=>{
+                    xm.emotion = 99
+                    xm.receiveFlower(sender)
+                },2000)
+            }
+            }
+        } 
+    </script>
+</body>
+</html>
