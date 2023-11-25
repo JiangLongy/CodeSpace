@@ -1,0 +1,36 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "JavaScrpit You don`t konw",
+      "author": "龙哥"
+    },
+    {
+      "id": 2,
+      "title": "高级程序设计",
+      "author": "杨哥"
+    },
+    {
+      "title": "设计模式",
+      "author": "杨哥",
+      "id": 3
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    },
+    {
+      "id": 2,
+      "body": "学习了",
+      "postId": 1
+    },
+    {
+      "body": "very good",
+      "postId": "1",
+      "id": 3
+    }
+  ]
+}
