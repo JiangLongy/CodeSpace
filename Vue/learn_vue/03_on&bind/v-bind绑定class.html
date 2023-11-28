@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .active{
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app"></div>
+    <template id="my-app">
+       <!-- <div :class="className">盖亚</div> -->
+       <!-- isActive为true则添加类名 -->
+       <!-- <div :class="{'active':isActive}">波比大王</div>
+       <button @click="change">切换</button> -->
+       <div :class="{'active':isActive,'title':true}">赛博朋克</div>
+       <div class="lang" :class="className">鱼缸套装</div>
+       <div class="baobao" :class="classObj">旭旭宝宝</div>
+       <div class="baby" :class="getClass()">🐂( ఠൠఠ )</div>
+       <div :class="['yu','baby',className]">🐟🐟🐟</div>
+       <div :class="['long',isActive?'active':' ']">🐉🐉</div>
+       <div :class="['niaoniao',{'active':isActive}]">🐥</div>
+    </template>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+        const App = {
+            template: '#my-app',
+            data() {
+                return {
+                    className:'username',
+                    isActive:true,
+                    classObj:{
+                        active:true,
+                        title:true
+                    }
+                }
+            },
+            methods:{
+                change(){
+                    this.isActive = !this.isActive
+                },
+                getClass(){
+                    return 'niuniu'
+                }
+            }
+        }
+        Vue.createApp(App).mount('#app')
+    </script>
+</body>
+
+</html>
