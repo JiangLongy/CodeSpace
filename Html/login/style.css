@@ -1,0 +1,60 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.main{
+    height: 100vh;
+    background-color:white;
+}
+.head{
+    margin-top: 20px;
+}
+.bk{
+    float: left;
+}
+.headtitle{
+    text-align: center;
+    font-size: 18px;
+}
+.user{
+    height: 150px;
+    margin-top: 175px;
+    text-align: center;
+}
+.user input{
+    border-radius: 10px;
+    height: 35px;
+    margin: 10px 0;
+    width: 180px;
+    background-color:whitesmoke;
+}
+.login button{
+    display: block;
+    border-radius:20px ;
+    width: 180px;
+    height: 40px;
+    background-color: rgb(237, 91, 42);
+    margin-bottom: 10px;
+    border: none;
+    margin: 0 auto;
+}
+.reset{
+    text-align: center;
+}
+.shutmain{
+    border: 1px;
+    height: 150px;
+    width: 150px;
+    font-family: '黑体';
+    margin: 40% 10% 40% 10%;
+    background-color: whitesmoke;
+    border-radius: 20px;
+}
+.success{
+    text-align: center;
+    font-size: 18px;
+}
+.bingo{
+    font-size: 100px;
+}
+

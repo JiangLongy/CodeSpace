@@ -5,5 +5,5 @@ var searchRange = function(nums, target) {
         arr.push(idx)
         idx = nums.indexOf(target,idx+1)
     }
-    return arr.length!=0?[arr[0],arr[arr.length-1]]:[]
+    return arr.length!=0?[arr[0],arr[arr.length-1]]:[-1,-1]
 };

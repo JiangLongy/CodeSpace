@@ -29,3 +29,4 @@ async function foo(){
     await B()
     await C()
 }
+foo()
