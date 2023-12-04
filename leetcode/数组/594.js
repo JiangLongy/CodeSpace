@@ -1,26 +1,15 @@
 var findLHS = function (nums) {
-    nums.sort((a, b) => a - b)
-    let left = 0,count
-    while(left<nums.length){
-        count = 0
-        let idx = 0
-        let  a= nums[left]+1
-        if(nums.indexOf(a)!=-1){
-            count++
-            idx = nums.indexOf(a)
-        }else{
-            break
+    nums.sort((a, b) => a - b);
+    let begin = 0;
+    let res = 0;
+    for (let end = 0; end < nums.length; end++) {
+        while (nums[end] - nums[begin] > 1) {
+            begin++;
         }
-        while(idx!=-1){
-            if(nums.indexOf(a,idx+1)){
-                count++
-                idx = nums.indexOf(a,idx+1)
-            }else{
-                break
-            }
+        if (nums[end] - nums[begin] === 1) {
+            res = Math.max(res, end - begin + 1);
         }
-        left++
     }
-    return count
+    return res;
 };
 console.log(findLHS([1,2,2,2]));
