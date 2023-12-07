@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+    <div id="app"></div>
+    <template id="tel">
+        <div>
+            <div>{{content}}</div>
+            <button @click="welcom">有顾客来</button>
+            <button @click="bye">有顾客离开</button>
+        </div>
+        <div>
+            <div v-show="ifshow">{{setMeal}}</div>
+            <button @click="show">显示/隐藏</button>
+        </div>
+    </template>
+    <script>
+        Vue.createApp({
+            template: '#tel',
+            data(){
+                return{
+                    content:"",
+                    ifshow:true,
+                    setMeal:'真空套餐  帝王套餐  夏日套餐 学生套餐'
+                }
+            },
+            methods:{
+                welcom(){
+                    this.content="欢迎您的光临 贵宾一位"
+                },
+                bye(){
+                    this.content="欢迎下次光临 "
+                },
+                show(){
+                    this.ifshow = !this.ifshow
+                }
+            }
+        }).mount('#app')
+    </script>
+</body>
+</html>
