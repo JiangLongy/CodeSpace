@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+    <div id="app"></div>
+    <script>
+        const app = Vue.createApp({
+            template:
+                `
+                <h2>足涧道</h2>
+                <FaGonZi :name="boss"/>
+                <PaoJio  :pay="pay"/>
+            `,
+            data() {
+                return {
+                    boss: '喻导',
+                    pay:()=>{
+                        alert('和女朋友报备')
+                    }
+                }
+            }
+           
+        })
+        app.component('FaGonZi', {
+            props: ['name'],
+            template:
+                `
+            <div>{{name}}发工资了</div>
+            `
+        })
+        app.component('PaoJio',{
+            props:['pay'],
+            methods:{
+                handleClick(){
+                    this.pay()
+                    alert('蜗牛哥哥开着凯迪拉克去泡Jio')
+                    
+                }
+            },
+            template:
+            `
+                <div @click="this.handleClick">蜗牛哥哥领工资了</div>
+            `
+        })
+
+        const vm = app.mount('#app')
+    </script>
+</body>
+
+</html>
