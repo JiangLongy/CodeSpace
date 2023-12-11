@@ -4,7 +4,7 @@
             <div class="avatar">
                 <img src="http://static.galileo.xiaojukeji.com/static/tms/seller_avatar_256px.jpg" alt="">
             </div>
-            <div class="content">
+            <div class="content"> 
                 <div class="title">
                     <span class="brand"></span>
                     <span class="name">店铺名称</span>
