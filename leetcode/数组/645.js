@@ -1,18 +1,12 @@
 var findErrorNums = function(nums) {
-    nums.sort((a,b)=>a-b);
+    let set = new Set()
     let arr = []
-    let num 
-    for(let i = 1;i<=nums.length;i++){
-        if(nums[i-1] != i){
-           num = i   
-           break        
-        }    
-    }
-    for(let i = 0;i<=nums.length;i++){
-        if(nums[i-1] == nums[i]){
-            arr.push(nums[i])
+    for(let i = 0;i<nums.length;i++){
+        if(set.add(nums[i]) === undefined){
+            arr[1] = nums[i]
+            break;
         }
     }
-     arr.push(num)
+    
 };
 console.log(findErrorNums([3,2,3,4,6,5]));
