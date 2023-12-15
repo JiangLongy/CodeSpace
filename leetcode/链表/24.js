@@ -3,20 +3,24 @@ function ListNode(val, next) {
     this.next = (next === undefined ? null : next)
 }
 var swapPairs = function(head) {
-    let fst = head
-    let sec = head.next
     let newHead = new ListNode(0,head)
     let pre = newHead
+    if(!newHead.next){
+        return newHead.next
+    }
+        let fst = head,sec
+    sec = head.next
     while(sec){
         pre.next = sec
         fst.next = sec.next
         sec.next = fst
-        let temp = sec
-        sec = fst
-        fst = sec
-        pre = sec
-        fst = fst.next.next
-        sec = sec.next.next
+        pre = fst
+        if(fst.next){
+        fst = fst.next
+        sec = fst.next
+        }else{
+            break
+        }
     }
-    return head
+    return newHead.next
 };
