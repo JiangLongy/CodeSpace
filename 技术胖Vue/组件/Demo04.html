@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+    <body>
+        <div id="app"></div>
+        <script>
+            const app = Vue.createApp({
+                template:
+                    `
+                    <h2>JSPang.com<h2>
+                    <Son :name="132"/>
+                `,
+                data(){
+                    name:''
+                }
+            })
+            app.component('Son',{
+                props:{
+                    name:{
+                        type:String,
+                        required:true,
+                        validator:function(value){
+                            return value.search('jsp') != -1
+                        },
+                        default:55555
+                    }
+                },
+                template:`<div>{{name}}</div>`
+            })
+            const vm = app.mount('#app')
+        </script>
+</body>
+</html>
