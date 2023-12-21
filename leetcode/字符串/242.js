@@ -1,19 +1,25 @@
 var isAnagram = function(s, t) {
-    if(s.length != t.length)return false
-    let len = s.length
-    let set = new Set()
-    let i = 0
-    while(i<len-1){
-        let idx1 = s.indexOf(s[i])
-        let idx2 = t.indexOf(s[i])
-        if(set.add(s[i+1])){
-            
-            while(idx1<len ){
-                if(s.indexOf(s[i+1],idx1) !=-1 && t.indexOf(s[i+1],idx2 !=-1)){
-                    idx1
-                }
-            }
-        }
-        i++
+    if(s.length!=t.length){
+        return false
     }
+   let set = new Set()
+   for(let i = 0;i<s.length;i++){
+    if(!set.has(s[i])){
+        set.add(s[i])
+        if(sum(s,s[i]) != sum(t,s[i])){
+            return false
+        }
+    }
+   }
+   return true
 };
+function sum(str,a){
+    let index = str.indexOf(a)
+    count = 0
+    while(index != -1){
+        index = str.indexOf(a,index+1)
+        count++
+    }
+    return count
+}
+console.log(sum('nagaram','a'));
