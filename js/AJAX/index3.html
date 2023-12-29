@@ -15,7 +15,7 @@
         const btn = document.getElementById('btn');
         btn.addEventListener('click',()=>{
             //朝网易云服务器上的后端代码发一个http请求
-          fetch('http://192.168.31.45:3000/top/song?type=7')
+          fetch('https://api.github.com/users/shunwuyu/repos')
           .then(data =>data.json())
             //json()格式化对象
             // console.log(data.json());

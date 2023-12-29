@@ -4,19 +4,23 @@
       <div class="detail-wrapper">
 
         <div class="detail-main">
-          <h1 class="name">店铺名称</h1>
+          <div class="detail-main-title">
+            <h1 class="name">店铺名称</h1>
+            <div class="star"></div>
+          </div>
+          <div class="information"></div>
+          <div class="notice"></div>
         </div>
-
-
       </div>
       <div class="detail-close" @click.stop="hideDetail">
-        X
+        <i class="iconfont icon-cha"></i>
       </div>
     </div>
   </transition>
 </template>
 
 <script>
+
   export default {
     data() {
       return {
@@ -63,6 +67,9 @@
     margin-left: -15px;
     text-align: center;
     line-height: 30px;
+    .iconfont{
+      font-size: @fontsize-large-xxxx;
+    }
   }
 
 }

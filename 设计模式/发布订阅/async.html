@@ -1,0 +1,19 @@
+<script>
+    function fnA(){
+        setTimeout(()=>{
+            console.log('请求A完成');
+            let ev = new CustomEvent('finish',{detail:{name:'ok'}})
+            window.dispatchEvent(ev)
+        },1000)
+    }
+    function fnB(){
+        setTimeout(()=>{
+            console.log('请求B完成');
+
+        },500)
+    }
+    fnA()
+    window.addEventListener('finish',()=>{
+        fnB()
+    })
+</script>

@@ -1,7 +1,7 @@
 function add(a,b,c){
     return a+b+c;
 }
-// 函数的颗粒化
+// 函数的柯里化
 function curry(fn){
     //收集参数 闭包 arr
     //到位了 运行 arr.length == fn.length fn(...arr)
@@ -15,7 +15,7 @@ function curry(fn){
     return judge
 }
 //有时候不会一次性给到 前端的交互
-//js curry 颗粒化 每次接收一个参数add(1)(2)(3)
-console.log(add.length);
+//js curry 柯里化 每次接收一个参数add(1)(2)(3)
+// console.log(add.length);
 const curryAdd = curry(add)
 console.log(curryAdd(1)(2)(3));

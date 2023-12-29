@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .img-item{
+            display: block;
+            height: 300px;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <img class='img-item' src="" data-original="https://media.indiedb.com/images/downloads/1/141/140388/logo_tup.jpg" alt="">
+    <img class='img-item' src="" data-original="https://ts1.cn.mm.bing.net/th/id/R-C.fe8303a785a33189e4e24ba530a70382?rik=dVxkKcgbWxyRLQ&riu=http%3a%2f%2fwww.laverocks.co.uk%2fgilslandmag%2fdesktops%2fxtup_800.jpg.pagespeed.ic.wb_S4EVXgU.jpg&ehk=4fkPQNq86UOkGhr71pywhwmmtLYHv6hcTrwLxq9%2fbBA%3d&risl=&pid=ImgRaw&r=0" alt="">
+    <img class='img-item' src="" data-original="https://ts1.cn.mm.bing.net/th/id/R-C.d4bfc069bb714818229338c5bd04b59e?rik=OutLpnfhKxV%2bKA&riu=http%3a%2f%2fwww.appzyw.net%2fupfiles%2fimage%2f202001%2f20200112113023601.jpg&ehk=0ot9LOln80CuJBFt66nhpE1JUD0dOt3hXb8dQJmY0Y4%3d&risl=&pid=ImgRaw&r=0" alt="">
+    <img class='img-item' src="" data-original="https://ts1.cn.mm.bing.net/th/id/R-C.7ecdb52cb56c0e121025e1b752296fb3?rik=tTsFgweG5QNWIQ&riu=http%3a%2f%2fpic.bizhi360.com%2fbbpic%2f27%2f9727_7.jpg&ehk=fzaYq%2brx5WqWQ2zu7P3Mqgnmwiq4Nx%2fbDftpz3vaf7w%3d&risl=&pid=ImgRaw&r=0" alt="">
+    <img class='img-item' src="" data-original="https://pic4.zhimg.com/v2-497305b2ee426db31db4e5d2125fbb87_r.jpg" alt="">
+    <script>
+    //判断图片有没有进入可视区域 有就将data-original的值赋给src
+    let viewHeight = window.innerHeight
+    function lazyLoad(){
+        let imgs = document.querySelectorAll('img')
+        Array.from(imgs).forEach(el=>{
+            let rect = el.getBoundingClientRect()
+            if(rect.top<viewHeight){
+                let image = new Image()
+                image.src = el.dataset.original
+                image.onload = function(){
+                    el.src = image.src
+                }
+                el.removeAttribute('data-original')
+            }
+        })
+    }
+    lazyLoad()
+    window.addEventListener('scroll',lazyLoad)
+    </script>
+</body>
+</html>

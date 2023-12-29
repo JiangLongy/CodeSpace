@@ -25,5 +25,5 @@ let person = {
     name:"坤坤"
 }
 // arrowFn.myBind()
-let bindFn = sayHello.myBind(person,1,2,);
+let bindFn = sayHello.myBind(person,1,2);
 console.log(bindFn(3));

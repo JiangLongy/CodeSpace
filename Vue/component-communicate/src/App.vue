@@ -3,6 +3,7 @@
     <div class="head">
       <input type="text" name="" v-model="message">
       <button @click="submit">确定</button>
+      <List :lists="lists"/>
     </div>
     
   </div>
@@ -10,6 +11,9 @@
 
 <script>
   export default {
+    components:{
+      List
+    },
     data(){
       return {
         lists:['html','css'],
