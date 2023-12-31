@@ -3,7 +3,7 @@
 2. 到达事件触发处
 3. 从事件触发处往window上传播，遇到注册的冒泡事件会触发
 
-- js事件默认都在冒泡的过程触发
+- js事件默认都在冒泡的过程触发 
 - event.stopPropagation() || e.stopImmediatePropagation() 阻止默认事件的传播（用在冒泡就阻止冒泡，捕获就阻止捕获）
 - e.stopImmediatePropagation() 阻止同一DOM绑定多个相同事件
 
