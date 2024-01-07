@@ -80,11 +80,12 @@ const submitForm = (formEl:FormInstance|undefined) => {
     }
     formEl.validate((valid) => {
         if (valid) {
-            ElMessage.error('登陆成功')
+            ElMessage.success('登陆成功')
             localStorage.setItem('ms_username',param.username)
             const keys= permiss
             .roleList[param.username == 'admin'?'admin':'user']
             localStorage.setItem('ms_keys',JSON.stringify(keys))
+            permiss.setKeys(keys)
             router.push('/')
         } else {
             ElMessage.error('请校验表单')

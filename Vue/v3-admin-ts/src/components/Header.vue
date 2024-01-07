@@ -49,7 +49,8 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import {computed} from 'vue'
+import { useSidebarStore } from '../store/sidebar';
 import imgurl from '../assets/img/img1.jpg';
 import { useRouter } from 'vue-router';
 const router = useRouter()
@@ -63,10 +64,10 @@ const handleCommand = (command: string) => {
         router.push('/user')
     }
 }
-
-const collapse = ref(false)
+const sidebarStore = useSidebarStore()
+const collapse = computed(()=>sidebarStore.collapse)
 const collapseChange = () => {
-    collapse.value = !collapse.value
+    sidebarStore.handleCollapse();
 }
 </script>
 
