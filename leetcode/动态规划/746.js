@@ -3,7 +3,7 @@ var minCostClimbingStairs = function(cost) {
     const dp = new Array(n + 1);
 
     // 初始化dp数组
-    dp[0] = cost[0];
+    dp[0] = cost[0]; 
     dp[1] = cost[1];
 
     // 计算dp数组
