@@ -23,46 +23,49 @@
             </van-cell-group>
             <div style="margin: 16px;">
                 <van-button round block type="primary" native-type="submit" color="#000000">
-                    登录
+                    注册
                 </van-button>
             </div>
         </van-form>
-        <p 
-            class="text-center" 
-            @click="register"
-        >
-            新用户？点击这里注册
-        </p>
+        <p class="text-center" @click="login">已有账号？点击登录</p>
     </div>
-
 </template>
 
 <script setup>
 import { useRouter } from 'vue-router'
 import { reactive } from 'vue'
-import axios from '../api';
+import {showSuccessToast} from 'vant'
+import axios from '../api'
 
-
+const router = useRouter()
 const state = reactive({
     username:'',
     password:''
 })
-const router = useRouter()
+
 
 const onSubmit = async () => {
-// 发请求,将state.username, state.password传给后端
-  const res = await axios.post('/login',{
-    username:state.username,
-    password:state.password
+  // 发请求,将state.username, state.password传给后端
+  const data = await axios.post('/register', {
+    username: state.username,
+    password: state.password,
   })
-  sessionStorage.setItem('userInfo',JSON.stringify(res.data))
-  router.push('/layout')
+  // console.log(data);
+
+  showSuccessToast(data.msg)
+  setTimeout(() => {
+    router.push('/login')
+  }, 1500)
+
+
 }
 
-//跳转到注册页面
-const register = () => {
-  router.push('/register')
+
+const login = ()=>{
+    router.push('/login')
 }
 </script>
 
-<style lang="less" scoped></style>
+<style lang="less" scoped>
+
+</style>
