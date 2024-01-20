@@ -1,9 +1,18 @@
 import {createRouter,createWebHistory} from 'vue-router'
 
 const routes = [
+
     {
         path:'/',
         redirect: '/layout',
+    },
+    {
+        path:'/search',
+        name:'search',
+        component:()=> import('../views/Search.vue'),
+        meta:{
+            title:'搜索'
+        }
     },
     {
         path: '/login',

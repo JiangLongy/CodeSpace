@@ -49,8 +49,24 @@ const userRegister = (values) =>{
     let _sql = `insert into users set username=?,password=?;`
     return allService.query(_sql,values);
 }
+// 取文章
+const noteGet = (type) =>{
+    let _sql = ''
+    if(type === "全部"){
+         _sql = `select * from note;`
+    }else{
+         _sql = `select * from note where type="${type}";`
+    }
+    return allService.query(_sql)
+}
+const noteSet = (values)=>{
+    let _sql = `insert into note set title=?,type=?,note_content=?,head_image=?,username=?,c_time=?,m_time=?;`
+    return allService.query(_sql,values)
+}
 module.exports = {
     userLogin,
     userFind,
-    userRegister
+    userRegister,
+    noteGet,
+    noteSet
 }

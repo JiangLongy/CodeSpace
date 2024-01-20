@@ -5,10 +5,11 @@ import 'vant/lib/index.css';
 import App from './App.vue'
 import router from './router'
 import { Tabbar, TabbarItem, Field, CellGroup } from 'vant';
-
+import { createPinia } from 'pinia'
 
 const app = createApp(App)
 
+app.use(createPinia())
 app.use(Tabbar)
 app.use(TabbarItem)
 app.use(Field)
