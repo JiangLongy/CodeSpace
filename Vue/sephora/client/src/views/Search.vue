@@ -27,8 +27,12 @@
 
 <script setup>
 import SearchPop from '../components/SearchPop.vue';
+import {useSearchStore} from '../store/search';
+import { useRouter } from 'vue-router';
+const router = useRouter();
+const searchStore = useSearchStore();
 const goBack =()=>{
-    window.history.back();
+    router.push('/home')
 }
 </script>
 

@@ -9,7 +9,17 @@
 <script setup>
 import { computed, onBeforeUnmount, onMounted } from 'vue';
 import { useSearchStore } from '../store/search'
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
 const searchStore = useSearchStore()
+const onClickButton = () => {
+    searchStore.search(searchStore.value);
+    router.push('/searchview')
+}
+const currentIn = computed(() => searchStore.currentIn)
+
+
 onMounted(() => {
     searchStore.change();
 })
@@ -17,7 +27,7 @@ onBeforeUnmount(() => {
     searchStore.stop();
 })
 
-const currentIn = computed(() => searchStore.currentIn)
+
 </script>
 
 <style lang="less" scoped></style>

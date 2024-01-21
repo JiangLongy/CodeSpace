@@ -59,14 +59,24 @@ const noteGet = (type) =>{
     }
     return allService.query(_sql)
 }
+//上传文章
 const noteSet = (values)=>{
     let _sql = `insert into note set title=?,type=?,note_content=?,head_image=?,username=?,c_time=?,m_time=?;`
     return allService.query(_sql,values)
+}
+//搜索商品
+const goodsSearch = (values) =>{
+    if(!values){
+        return null
+    }
+    let _sql = `select * from goods where name like "%${values}%" or category like "%${values}%" or description like "%${values}%" or brand LIKE "%${values}%";`
+    return allService.query(_sql)
 }
 module.exports = {
     userLogin,
     userFind,
     userRegister,
     noteGet,
-    noteSet
+    noteSet,
+    goodsSearch
 }

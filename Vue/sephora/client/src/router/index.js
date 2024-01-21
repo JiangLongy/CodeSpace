@@ -7,6 +7,14 @@ const routes = [
         redirect: '/layout',
     },
     {
+        path:'/searchview',
+        name:'searchview',
+        component:()=> import('../views/SearchView.vue'),
+        meta:{
+            title:'搜索详情'
+        }
+    },
+    {
         path:'/search',
         name:'search',
         component:()=> import('../views/Search.vue'),

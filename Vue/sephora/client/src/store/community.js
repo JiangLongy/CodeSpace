@@ -21,7 +21,7 @@ export const useCommunityStore = defineStore('community',{
             })
             console.log(response);
             this.data = response.data;
-            console.log(this.data);
+            console.log(this.data[0].id);
         } catch (error) {
             
         }

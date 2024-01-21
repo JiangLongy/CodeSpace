@@ -1,4 +1,6 @@
 import { defineStore } from 'pinia'
+import axios from '../api/index'
+
 export const useSearchStore = defineStore('search', {
     state: () => {
         return {
@@ -11,13 +13,15 @@ export const useSearchStore = defineStore('search', {
             in:'宝藏小众香氛',
             count:1,
             intervalId: null,
-            value:''
+            value:'',
+            goods:[],
         }
     },
     getters:{
         currentIn(state){
             return state.in
         }
+       
     },
     actions:{
         //定时器，修改搜索框中的默认内容
@@ -34,6 +38,12 @@ export const useSearchStore = defineStore('search', {
         stop(){
             clearInterval(this.intervalId);
             this.intervalId = null
+        },
+        async search(value){
+           this.goods = await axios.post('/goodsSearch',{
+                value:value
+            })
+            console.log(this.goods);
         }
     }
 })
