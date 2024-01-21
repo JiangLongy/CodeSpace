@@ -72,11 +72,17 @@ const goodsSearch = (values) =>{
     let _sql = `select * from goods where name like "%${values}%" or category like "%${values}%" or description like "%${values}%" or brand LIKE "%${values}%";`
     return allService.query(_sql)
 }
+//搜索全部商品
+const allGoods = ()=>{
+    let _sql = `select * from goods;`
+    return allService.query(_sql)
+}
 module.exports = {
     userLogin,
     userFind,
     userRegister,
     noteGet,
     noteSet,
-    goodsSearch
+    goodsSearch,
+    allGoods
 }
