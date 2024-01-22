@@ -77,6 +77,26 @@ const allGoods = ()=>{
     let _sql = `select * from goods;`
     return allService.query(_sql)
 }
+//添加购物车
+const goodsAdd = (values) =>{
+    let _sql = `insert into shopping_cart set user_id=?,goods_id=?,quantity=?;`
+    return allService.query(_sql,values)
+}
+//更新购物车
+const updataBag = (values)=>{
+    let _sql = `update shopping_cart set quantity = quantity + ? where user_id = ? and goods_id = ?;`
+    return allService.query(_sql,values)
+}
+//查找购物车中是否购买过相同物品
+const goodsFind = (values)=>{
+    let _sql = `select * from shopping_cart where user_id = ? and goods_id = ?;`
+    return allService.query(_sql,values)
+}
+//更新库存
+const quantityUpdate = (values)=>{
+    let _sql = `update goods set stock_quantity = stock - ? where id = ?;`
+    return allService.query(_sql,values)
+}
 module.exports = {
     userLogin,
     userFind,
@@ -84,5 +104,9 @@ module.exports = {
     noteGet,
     noteSet,
     goodsSearch,
-    allGoods
+    allGoods,
+    goodsAdd,
+    quantityUpdate,
+    goodsFind,
+    updataBag
 }

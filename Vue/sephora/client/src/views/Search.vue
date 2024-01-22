@@ -32,6 +32,7 @@ import { useRouter } from 'vue-router';
 const router = useRouter();
 const searchStore = useSearchStore();
 const goBack =()=>{
+    searchStore.value=''
     router.push('/home')
 }
 </script>

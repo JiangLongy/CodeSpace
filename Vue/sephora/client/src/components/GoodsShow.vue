@@ -16,7 +16,7 @@
       <van-empty image="https://img.88icon.com/download/jpg/20201103/99ccfe3ebbc2a54599c58db324b3327c_512_512.jpg!bg"
         description="没有找到你想要的东西哦！" />
     </div>
-    <van-cell v-for="item in list" :key="item" :title="item" />
+    <!-- <van-cell v-for="item in list" :key="item" :title="item" /> -->
 
 <van-back-top />
   </div>
