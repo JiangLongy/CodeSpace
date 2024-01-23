@@ -40,7 +40,7 @@
 览器继续往下执行代码，如果还有相同行为，继续进入队列，直到
 下面没有样式修改，浏览器会批量化渲染队列中的回流过程，这只
 发生一次回流
-
+·
 读取容器几何信息:
 offsetTop,offsetLeft,offsetWidth,offsetHeight
 clientWidth,clienLeft,clientHeight,clientTop

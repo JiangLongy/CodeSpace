@@ -5,25 +5,34 @@ export const useCommunityStore = defineStore('community',{
         return {
             data:[],
             value:'',
-            currentType:'全部'
+            note:[]
         }
     },
     getters:{
-        change(type){
-            this.currentType = type
-        }
     },
     actions:{
-       async getNote(){
+       async getNote(type){
         try {
             const response = await axios.post('/noteGet',{
-                type:this.currentType
+                type:type
             })
             console.log(response);
             this.data = response.data;
-            console.log(this.data[0].id);
+            console.log(this.data);
         } catch (error) {
-            
+            console.log(error);
+        }
+       },
+       async getNoteDetail(id){
+        try {
+            const response = await axios.post('/noteDetailGet',{
+                id:id
+            })
+            this.note = response.data;
+            // console.log(this.note);
+        }
+        catch (error) {
+            console.log(error);
         }
        }
     }

@@ -1,15 +1,16 @@
 <template>
     <div>
         <!-- 头部 -->
-        <div class="flex justify-between p-4 text-xs h-[35px] shadow bg-black fixed w-full z-999">
-            <div class="flex items-center text-white">
-                <div class="mr-2">距活动结束</div>
-                <van-count-down :time="time" class="ml-2" style="--van-count-down-text-color: white;" />
+        <div class="flex justify-between items-center h-10 fixed top-0 left-0 right-0 z-10 bg-white shadow-sm" >
+            <div class="font-bold text-lg ml-2 mt-2">购物车</div>
+            <div class="flex text-xs mt-4 mr-2 text-slate-500">
+                <span class="mr-2">分享心愿</span>
+                <span class="mr-2">编辑</span>
+                <span>客服</span>
             </div>
-            <div class="text-white mt-3 mr-7">客服</div>
         </div>
         <!-- 购物车有东西 -->
-        <div class="pt-[67px] ml-2 mr-2" v-if="true">
+        <div class="pt-[67px] ml-2 mr-2" v-if="false">
             <div class="flex justify-between w-full items-center h-10 font-bold text-xs">
                 <div>买任意商品,享超值兑换</div>
                 <van-button round type="success" color="black" size="mini" to="/home">去换购</van-button>
@@ -30,7 +31,9 @@
             </van-empty>
         </div>
         <!-- 展示所有商品 -->
-        <div class="w-full text-center mt-2">热卖</div>
+        <div class="w-full text-center mt-2">
+            <van-icon name="like-o" />
+            热卖</div>
         <div>
             <GoodsShow />
         </div>
@@ -46,7 +49,6 @@ import { onMounted } from 'vue';
 import GoodsShow from '../components/GoodsShow.vue';
 
 const searchStore = useSearchStore();
-const time = ref(30 * 60 * 60 * 1000);
 
 onMounted(() => {
     searchStore.searchAll();

@@ -7,6 +7,14 @@ const routes = [
         redirect: '/layout',
     },
     {
+        path:'/notedetail',
+        name: 'notedetail',
+        component: () => import('../views/NoteDetail.vue'),
+        meta: {
+            title: '笔记详情'
+        }
+    },
+    {
         path: '/buygoods',
         name: 'buygoods',
         component: () => import('../views/BuyGoods.vue'),

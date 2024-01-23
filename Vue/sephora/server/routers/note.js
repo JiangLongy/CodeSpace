@@ -2,8 +2,7 @@ const Router = require('@koa/router')
 const router = new Router()
 
 const { formatDate } = require('../config/utils.js')
-const { noteGet } = require('../controllers/mysqlControl')
-const { noteSet } = require('../controllers/mysqlControl')
+const { noteGet, noteSet,noteGetDetail } = require('../controllers/mysqlControl')
 //获取文章列表接口
 router.post('/noteGet', async (ctx) => {
     try {
@@ -32,6 +31,26 @@ router.post('/noteGet', async (ctx) => {
     }
 
 })
+//获取文章详情
+router.post('/noteDetailGet',async (ctx)=>{
+    try {
+        const { id } = ctx.request.body
+        const note = await noteGetDetail(id)
+        ctx.body = {
+            code: '8000',
+            data: note,
+            msg: 'sucess'
+        }
+    } catch (error) {
+        ctx.body = {
+            code: '8004',
+            data: 'error',
+            msg: '查找失败'
+            
+        }
+    }
+})
+//发布文章接口
 router.post('/noteSet', async (ctx) => {
     const { title, type, note_content, head_image, username } = ctx.request.body
     const c_time = formatDate(new Date())

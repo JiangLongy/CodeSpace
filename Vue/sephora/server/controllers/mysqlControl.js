@@ -49,7 +49,7 @@ const userRegister = (values) =>{
     let _sql = `insert into users set username=?,password=?;`
     return allService.query(_sql,values);
 }
-// 取文章
+// 取文章列表
 const noteGet = (type) =>{
     let _sql = ''
     if(type === "全部"){
@@ -57,6 +57,11 @@ const noteGet = (type) =>{
     }else{
          _sql = `select * from note where type="${type}";`
     }
+    return allService.query(_sql)
+}
+// 取文章详情
+const noteGetDetail = (id) =>{
+    let _sql = `select * from note where id="${id}";`
     return allService.query(_sql)
 }
 //上传文章
@@ -108,5 +113,6 @@ module.exports = {
     goodsAdd,
     quantityUpdate,
     goodsFind,
-    updataBag
+    updataBag,
+    noteGetDetail
 }

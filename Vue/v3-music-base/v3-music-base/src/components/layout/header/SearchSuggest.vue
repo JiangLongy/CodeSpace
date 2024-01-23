@@ -24,6 +24,7 @@
             <el-avatar size="small" :src="item.coverImgUrl"/>
             <div class="text-emerald-500 ml-2 truncate flex-1 w-1">{{ item.name }}</div>
         </div>
+        
     </div>
 </template>
 
