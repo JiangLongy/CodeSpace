@@ -7,6 +7,14 @@ const routes = [
         redirect: '/layout',
     },
     {
+        path:'/noteadd',
+        name: 'noteadd',
+        component: () => import('../views/NoteAdd.vue'),
+        meta: {
+            title: '添加笔记'
+        }
+    },
+    {
         path:'/notedetail',
         name: 'notedetail',
         component: () => import('../views/NoteDetail.vue'),

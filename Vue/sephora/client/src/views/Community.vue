@@ -55,6 +55,12 @@
         <van-empty description="这里还没有文章哦~~" />
       </div>
     </div>
+    <!-- 添加文章 -->
+    <van-floating-bubble v-model:offset="offset" axis="xy" icon="plus" magnetic="x" @click="showBottoms" />
+    <van-popup v-model:show="showBottom" position="bottom" :style="{ height: '100%', width:'100%'}" >
+        
+    </van-popup>
+
 
   </div>
 </template>
@@ -66,20 +72,26 @@ import { useCommunityStore } from '../store/community';
 import { onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 
-
+const offset = ref({ x: 303, y: 549 });
+const showBottom = ref(false)
 const router = useRouter();
 const store = useCommunityStore();
 const item = ref('全部')
 const select = async (val) => {
   item.value = val
   await store.getNote(item.value)
-  console.log(store.data);
 }
-
-const getNoteDetail = (id)=>{
-  router.push({path:'/notedetail' ,query:{id:id}})
+const showBottoms = () => {
+  showBottom.value = true
+}
+const getNoteDetail = (id) => {
+  router.push({ path: '/notedetail', query: { id: id } })
+}
+const goToAddNote = () => {
+  router.push({ path: '/noteadd' })
 }
 onMounted(async () => {
   await store.getNote(item.value)
 })
 </script>
+<style scoped></style>
