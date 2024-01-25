@@ -1,5 +1,5 @@
 <template>
-  <div class="flex">
+  <div class="flex bg-white z-999">
     <CommnunityHeader />
   </div>
   <!-- 中部 -->
@@ -37,32 +37,50 @@
     </div>
 
     <!-- 循环文章 -->
-    <div class="flex w-full h-full">
-      <div v-for="item in store.data"
-        class="mt-4 w-[50%] h-[250px] pr-3 ml-2 border border-gray-300 rounded-md overflow-hidden shadow-md flex flex-col"
-        v-if="store.data.length" @click="getNoteDetail(item.id)">
-        <div class="w-full h-[180px]">
-          <img :src="item.head_image" alt="" class="w-full h-full rounded-t-md">
+    <div v-if="true" class=" h-full pt-2 pl-2 pr-2 columns-2 pb-[50px] bg-slate-50">
+      <!-- 每一篇文章 -->
+      <div class="mb-3 h-full bg-white" v-for="item in store.data" :key="item.id"  v-if="store.data.length" @click="getNoteDetail(item.id)">
+        <img :src="item.head_image" alt=""
+          class="w-full h-full rounded-t-md">
+        <div class="mt-1 mb-1 text-sm">{{ item.title }}</div>
+        <div>
+          <div class="flex items-center rounded-b-sm">
+            <van-image round width="1.5rem" height="1.5rem" src="https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg" />
+            <div class="text-xs ml-2">{{ item.username }}</div>
+            <van-icon name="good-job-o" class="float-right mr-1" />
+          </div>
         </div>
-        <div class="van-multi-ellipsis--l2 mt-2 flex-grow">{{ item.title }}</div>
-        <div class="flex items-center justify-between w-full mt-2 mb-1">
-          <div>{{ item.username }}</div>
-          <van-icon name="good-job-o" />
-        </div>
-      </div>
-      <!-- 如果还没有文章 -->
-      <div v-else class=" w-full text-center">
-        <van-empty description="这里还没有文章哦~~" />
       </div>
     </div>
-    <!-- 添加文章 -->
-    <van-floating-bubble v-model:offset="offset" axis="xy" icon="plus" magnetic="x" @click="showBottoms" />
-    <van-popup v-model:show="showBottom" position="bottom" :style="{ height: '100%', width:'100%'}" >
-        
-    </van-popup>
-
-
+    <!-- 如果还没有文章 -->
+    <div v-else class=" w-full text-center">
+      <van-empty description="这里还没有文章哦~~" />
+    </div>
   </div>
+  <!-- 添加文章 -->
+  <van-floating-bubble v-model:offset="offset" axis="xy" icon="plus" magnetic="x" @click="showBottoms" />
+  <van-popup v-model:show="showBottom" closeable close-icon-position="top-left" position="bottom"
+    :style="{ height: '100%' }">
+    <div class="text-center mt-40">发布新的帖子</div>
+    <div class="flex justify-center mt-[180px]">
+      <div class="mr-5" @click="goToAddNote">
+        <div class="w-[50px] h-[50px] rounded-[50%] bg-black">
+          <img src="../assets/pic/pic3.png" alt="" class="w-full h-full">
+        </div>
+        <div class="text-center mt-2">图片</div>
+      </div>
+      <div class="ml-5" @click="goToAddNote">
+        <div class="w-[50px] h-[50px] rounded-[50%] bg-black">
+          <img src="../assets/pic/pic4.png" alt="" class="w-full h-full">
+        </div>
+        <div class="text-center mt-2">长图文</div>
+      </div>
+    </div>
+  </van-popup>
+
+
+
+  <!-- </div> -->
 </template>
 
 <script setup>
@@ -95,3 +113,18 @@ onMounted(async () => {
 })
 </script>
 <style scoped></style>
+
+
+<!-- <div class="grid grid-cols-2 gap-4 w-full h-full">
+  <div v-for="item in store.data"
+    class="mt-4 w-full h-full pr-3 ml-2 border border-gray-300 rounded-md overflow-hidden shadow-md flex flex-col"
+    v-if="store.data.length" @click="getNoteDetail(item.id)">
+    <div class="w-full h-[180px]">
+      <img :src="item.head_image" alt="" class="w-full h-full rounded-t-md">
+    </div>
+    <div class="van-multi-ellipsis--l2 mt-2 flex-grow">{{ item.title }}</div>
+    <div class="flex items-center justify-between w-full mt-2 mb-1">
+      <div>{{ item.username }}</div>
+      <van-icon name="good-job-o" />
+    </div>
+  </div> -->

@@ -7,7 +7,7 @@
 </template>
 
 <script setup>
-import { reactive,onMounted  } from 'vue';
+
 import {useCommunityStore}from '../store/community'
 const store = useCommunityStore();
 

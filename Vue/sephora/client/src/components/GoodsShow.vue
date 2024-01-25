@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="pb-[126px]">
     <!-- 搜索到数据就显示 -->
     <div class="grid grid-cols-2 gap-4 p-4" v-if="searchStore.goods.data.length">
       <div v-for="item in searchStore.goods.data" :key="item.id" class="bg-white rounded-md overflow-hidden shadow-md"
@@ -18,7 +18,7 @@
     </div>
     <!-- <van-cell v-for="item in list" :key="item" :title="item" /> -->
 
-<van-back-top />
+<van-back-top right="5vw" bottom="20vh"/>
   </div>
 </template>
 

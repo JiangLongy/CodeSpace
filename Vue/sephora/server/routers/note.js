@@ -52,11 +52,12 @@ router.post('/noteDetailGet',async (ctx)=>{
 })
 //发布文章接口
 router.post('/noteSet', async (ctx) => {
-    const { title, type, note_content, head_image, username } = ctx.request.body
+    const { title, type, note_content, head_image, username,userId } = ctx.request.body
+   
     const c_time = formatDate(new Date())
     const m_time = formatDate(new Date())
     try {
-        const result = await noteSet(title, type, note_content, head_image, username, c_time, m_time)
+        const result = await noteSet([title, type, note_content, head_image, username,userId,c_time, m_time])
         if(result.affectedRows){
             ctx.body = {
                 code: '8000',

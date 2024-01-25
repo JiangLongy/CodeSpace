@@ -47,7 +47,7 @@ export const useSearchStore = defineStore('search', {
         },
         async searchAll(){
             this.goods = await axios.post('/allgoods')
-             console.log(this.goods);
+            //  console.log(this.goods);
          }
     }
 })

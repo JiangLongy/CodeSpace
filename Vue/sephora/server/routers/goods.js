@@ -1,7 +1,9 @@
 const Router = require('@koa/router')
 const router = new Router()
 
-const { goodsSearch,allGoods,goodsAdd,quantityUpdate,goodsFind} = require('../controllers/mysqlControl')
+const { goodsDelete, searchBag, goodsSearch, 
+    allGoods, goodsAdd, updataBag, quantityUpdate, 
+    goodsFind, quantityAdd} = require('../controllers/mysqlControl')
 
 //获取商品列表
 router.post('/goodsSearch', async (ctx) => {
@@ -34,7 +36,7 @@ router.post('/goodsSearch', async (ctx) => {
 
 })
 //获取全部商品
-router.post('/allgoods',async(ctx)=>{
+router.post('/allgoods', async (ctx) => {
     try {
         try {
             const res = await allGoods()
@@ -57,14 +59,14 @@ router.post('/allgoods',async(ctx)=>{
             msg: '服务器异常'
         }
     }
-    
+
 })
 //查找是否购买过相同物品
-router.post('/goodsFind',async()=>{
+router.post('/goodsFind', async (ctx) => {
     try {
-        const {user_id,goods_id} = ctx.request.body
+        const { user_id, goods_id } = ctx.request.body
         try {
-            const res = await goodsFind(user_id,goods_id)
+            const res = await goodsFind([user_id, goods_id])
             ctx.body = {
                 code: '8000',
                 data: res,
@@ -86,11 +88,11 @@ router.post('/goodsFind',async()=>{
     }
 })
 //添加到购物车
-router.post('/goodsAdd',async(ctx)=>{
+router.post('/goodsAdd', async (ctx) => {
     try {
-        const {user_id,goods_id,quantity} = ctx.request.body
+        const { user_id, goods_id, goodsname, quantity, price } = ctx.request.body
         try {
-            const res = await goodsAdd([user_id,goods_id,quantity])
+            const res = await goodsAdd([user_id, goods_id, goodsname, quantity, price])
             ctx.body = {
                 code: '8000',
                 data: res,
@@ -112,11 +114,12 @@ router.post('/goodsAdd',async(ctx)=>{
     }
 })
 //更新购物车
-router.post('/updatabag',async(ctx)=>{
+router.post('/updatabag', async (ctx) => {
     try {
-        const {user_id,goods_id,quantity} = ctx.request.body
+        const { user_id, goods_id, quantity } = ctx.request.body
         try {
-            const res = await updataBag(user_id,goods_id,quantity)
+            const res = await updataBag([quantity, user_id, goods_id]);
+
             ctx.body = {
                 code: '8000',
                 data: res,
@@ -140,11 +143,11 @@ router.post('/updatabag',async(ctx)=>{
 
 })
 //更新商品库存
-router.post('/quantityupdate',async(ctx)=>{
+router.post('/quantityupdate', async (ctx) => {
     try {
-        const {goods_id,quantity} = ctx.request.body
+        const { goods_id, quantity } = ctx.request.body
         try {
-            const res = await quantityUpdate(goods_id,quantity)
+            const res = await quantityUpdate([quantity, goods_id])
             ctx.body = {
                 code: '8000',
                 data: res,
@@ -154,7 +157,7 @@ router.post('/quantityupdate',async(ctx)=>{
             ctx.body = {
                 code: '8004',
                 data: 'error',
-                msg: '更新失败'
+                msg: '更新商品库存失败'
             }
         }
     } catch (error) {
@@ -165,5 +168,83 @@ router.post('/quantityupdate',async(ctx)=>{
         }
     }
 })
+//增加库存
+router.post('quantityadd',async (ctx) =>{
+    try {
+        const { goods_id, quantity } = ctx.request.body
+        try {
+            const res = await quantityAdd([quantity, goods_id])
+            ctx.body = {
+                code: '8000',
+                data: res,
+                msg: 'success'
+            }
+        } catch (error) {
+            ctx.body = {
+                code: '8004',
+                data: 'error',
+                msg: '增加库存失败'
+            }
+        }
+    } catch (error) {
+        ctx.body = {
+            code: '8005',
+            data: error,
+            msg: '服务器异常'
+        }
+    }
+})
+//搜索购物车
+router.post('/searchBag', async (ctx) => {
+    try {
+        const { user_id } = ctx.request.body
+        try {
+            const res = await searchBag(user_id)
+            ctx.body = {
+                code: '8000',
+                data: res,
+                msg: 'success'
+            }
+        } catch (error) {
+            ctx.body = {
+                code: '8004',
+                data: 'error',
+                msg: '查找失败'
+            }
+        }
+    } catch (error) {
+        ctx.body = {
+            code: '8005',
+            data: error,
+            msg: '服务器异常'
+        }
+    }
+})
+//删除商品
+router.post('/goodsDelect', async (ctx) => {
+    try {
+        const { user_id, goods_id } = ctx.request.body;
+        try {
+            const res = await goodsDelete(user_id, goods_id);
+            ctx.body = {
+                code: '8000',
+                data: res,
+                msg: 'success'
+            };
+        } catch (error) {
+            ctx.body = {
+                code: '8004',
+                data: 'error',
+                msg: '删除失败'
+            };
+        }
+    } catch (error) {
+        ctx.body = {
+            code: '8005',
+            data: error,
+            msg: '服务器异常'
+        };
+    }
+});
 
 module.exports = router

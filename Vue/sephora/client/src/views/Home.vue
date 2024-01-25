@@ -1,6 +1,6 @@
 <template>
     <!-- 头部 -->
-    <div class="text-center w-full mt-3">
+    <div class="text-center w-full mt-3 pb-[50px]">
         <div class="fixed top-0 w-full bg-white z-50">
             <van-row gutter="20">
             <van-col span="8" class="mt-2 text-ms">门店 <van-icon name="arrow-down" sticky /></van-col>

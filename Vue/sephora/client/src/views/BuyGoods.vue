@@ -79,11 +79,13 @@ const bagStore = useBagStore();
 const showBottom = ref(false);
 const value = ref(1);
 const userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
-const userId = userInfo.id;
+const user_id = userInfo.id;
 const queryString = window.location.search;
 const queryParams = new URLSearchParams(queryString);
-const id = parseInt(queryParams.get('id'),10);
+const goods_id = parseInt(queryParams.get('id'),10);
 const stock = parseInt(queryParams.get('stock'), 10);
+const goodsName = queryParams.get('name');
+const price = parseInt(queryParams.get('price'),10)
 const calculateOriginalPrice = (price, discount) => {
   const originalPrice = parseFloat(price) / (1 - parseFloat(discount));
   return originalPrice.toFixed(2);
@@ -94,7 +96,7 @@ const addTobag =() => {
     return;
   }
   // console.log(userId,id,value.value);
-  bagStore.addGoods(userId, id, value.value);
+  bagStore.purchaseGoods(user_id, goods_id, goodsName,value.value,price);
   showSuccessToast('成功加入购物车');
 };
 
