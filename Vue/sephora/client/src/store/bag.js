@@ -5,7 +5,9 @@ import axios from '../api/index'
 export const useBagStore = defineStore('bag', {
     state() {
         return {
-            bagGoods: []
+            bagGoods: [
+                
+            ]
         }
     },
     actions: {
@@ -52,6 +54,7 @@ export const useBagStore = defineStore('bag', {
                 user_id: user_id,
                 goods_id: goods_id
             })
+            console.log(res);
             await axios.post('/quantityadd',{goods_id: goods_id,quantity: 1})
             console.log(res);
         },

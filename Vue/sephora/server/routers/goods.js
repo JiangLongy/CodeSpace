@@ -169,7 +169,7 @@ router.post('/quantityupdate', async (ctx) => {
     }
 })
 //增加库存
-router.post('quantityadd',async (ctx) =>{
+router.post('/quantityadd',async (ctx) =>{
     try {
         const { goods_id, quantity } = ctx.request.body
         try {

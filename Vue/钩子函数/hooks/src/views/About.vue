@@ -1,13 +1,13 @@
 <template>
     <div>
         <p>about</p>
-        <Hello />
+        <!-- <Hello /> -->
     </div>
 </template>
 
 <script setup>
 import {onBeforeRouteUpdate,onBeforeRouteLeave} from 'vue-router'
-import {onMounted} from 'vue'
+import {onMounted, onUnmounted} from 'vue'
 import Hello from '../components/Hello.vue';
 // onBeforeRouteLeave((to,from,next)=>{
 //     console.log(to,from)
@@ -18,6 +18,9 @@ import Hello from '../components/Hello.vue';
 // } )
 onMounted(()=>{
     console.log('About mounted');
+})
+onUnmounted(()=>{
+    console.log('About unmounted');
 })
 </script>
 

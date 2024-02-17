@@ -28,9 +28,9 @@ const router = createRouter({
     history: createWebHistory(),
     routes
 })
-//全局的前置钩子
+// 全局的前置钩子
 // router.beforeEach((to,from,next)=>{
-//     // console.log(to,from); 
+//     console.log(to,from); 
 //     document.title = to.meta.title
 //     if(to.path != '/'){
 //         const isLogin = localStorage.getItem('isLogin')
