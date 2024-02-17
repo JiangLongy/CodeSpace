@@ -37,7 +37,23 @@
 				"navigationBarTitleText" : "",
 				"enablePullDownRefresh" : false
 			}
+		},
+		{
+			"path" : "pages/login/login",
+			"style" : 
+			{
+				"navigationBarTitleText" : "",
+				"enablePullDownRefresh" : false
+			}
 		}
+		// {
+		// 	"path" : "utils/utils",
+		// 	"style" : 
+		// 	{
+		// 		"navigationBarTitleText" : "",
+		// 		"enablePullDownRefresh" : false
+		// 	}
+		// }
 	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
