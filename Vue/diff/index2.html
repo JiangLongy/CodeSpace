@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+    <div id="app">
+       <ul>
+           <li v-for="(item,index) in list" :key="index">{{item}}</li>
+       </ul>
+       <button @click="change">change</button>
+       <button @click="add">add</button></button>
+    </div>
+    <script>
+        const { createApp, ref } = Vue
+        createApp({
+            setup() {
+               const list = ref(['唱','跳','rap','篮球'])
+               const change = ()=>{
+                list.value.reverse()
+               }
+               const add = ()=>{
+                list.value.unshift('6')
+               }
+               return {
+                    list,
+                    change,
+                    add
+                }
+            }
+        }).mount('#app')
+    </script>
+</body>
+
+</html>
