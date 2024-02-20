@@ -5,7 +5,6 @@ export const reactiveMap = new WeakMap();//new Weakmap 对内存的回收更加�
 export function reactive(target){//将target变成响应式
     return createReactiveObject(target,reactiveMap,mutableHandlers)
 }
-
 export function createReactiveObject(target,proxyMap,proxyHandlers){//创建响应式函数
     //判断target是否是引用类型
     if(typeof target !== 'object' || target === null){//不是对象就不给操作

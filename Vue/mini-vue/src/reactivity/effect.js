@@ -15,6 +15,7 @@ export function effect(fn,options = {}){ //watch 和 computed 的核心逻辑
     if(!options.lazy){
         effectFn();
     }
+    effectFn.scheduler = options.scheduler;
     return effectFn;
 }
 //为某个属性添加effect
@@ -53,6 +54,10 @@ export function trigger(target,key){
         return
     }
     deps.forEach(effectFn => {
-        effectFn()
+        if(effectFn.scheduler){
+            effectFn.scheduler();
+        }else{
+            effectFn();
+        }
     });
 }

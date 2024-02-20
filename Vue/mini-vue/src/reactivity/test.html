@@ -16,7 +16,11 @@
         console.log(state.age)
         effect(
             ()=>console.log(`${state.name}今年${state.age}岁了`),
-            {lazy:false}
+            {lazy:false,
+                scheduler(){//当调度函数生效的时候，副作用函数就不再触发
+    console.log('scheduler调度器执行')
+  }
+            }
         )
         setInterval(()=>{
             state.age++
