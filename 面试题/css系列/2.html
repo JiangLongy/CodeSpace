@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* #app{
+            width: 400px;
+            height: 400px;
+            border: 1px solid #000;
+        } */
+        /* div{
+            width: 300px;
+            height: 300px;
+            border: 1px solid red;
+        } */
+        /* .box1,.box2,.box3{
+            width: 400px;
+            height: 100px;
+            background: #ccc;
+            margin: 10px 0 ;
+        }
+        h2{
+            color: blueviolet;
+        } */
+        /* #app div{
+            border: 1px solid red;
+        } */
+        /* #app >div{
+            border: 2px solid green;
+        } */
+        .box1 + .box2{
+            border: 2px solid green;
+        }
+        /* #app .box2{
+            border: 2px solid green;
+        } */
+        input[abc='abc']{
+            border: 2px solid red;
+        }
+        #input::before{
+            content: '123';
+        }
+        #input:focus{
+            background-color: turquoise;
+        }
+    </style>
+    <style>
+        #box{
+            width: 200px;
+            height: 200px;
+            background-color:aquamarine;
+        }
+        .warp{
+            background-color: tomato;
+        }
+        div{
+            background-color: blue ;/*!important*/
+        }
+    </style>
+</head>
+<body>
+    <!-- <div id="app">
+        <div class="box1">
+            <div class="title">
+                <h2>title</h2>
+            </div>
+        </div>
+        <div class="box2"></div>  
+        <div class="box2"></div>        
+        <div class="box3"></div>
+    </div> -->
+    <!-- <input type="text" abc="abc">
+    <input type="text" id="input"> -->
+    <div id="content"></div>
+    <div id="box" class="warp" style="">
+        helloworld
+    </div>
+</body>
+</html>

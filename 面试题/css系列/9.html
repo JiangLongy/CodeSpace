@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul li{
+            width: 200px;
+            height: 50px;
+            list-style: none;
+            background-color: aqua;
+            text-align: center;
+        }
+        ul{
+            height: 400px;
+            background-color: cadetblue;
+            display: flex;
+            /* flex-direction: column-reverse; */
+            /* flex-wrap: wrap; */
+            /* flex-flow: row nowrap; */
+            /* justify-content: space-between; */
+            /* align-items: baseline; */
+            /* align-content: flex-end;*/
+          
+        }
+        /* .item2{
+             order: -1;子元素order值越小，排放越靠前
+        } */
+        li{
+            /* flex-grow: 1; */
+            /* flex-shrink: 1; */
+            /* flex-basis: 250px; */
+            /* flex: 1 1 300px; */
+            /* flex: 1; */
+        }
+        .itme1{
+            /* flex-grow: 2; */
+            /* flex-shrink: 0; */
+        }
+        .item3{
+            /* flex: 0 0 200px; */
+            align-self: flex-end;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li class="item1">1</li>
+        <li  class="item2">2</li>
+        <li  class="item3">3</li>
+
+    </ul>
+</body>
+</html>
