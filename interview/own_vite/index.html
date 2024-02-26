@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vite App</title>
+</head>
+<body>
+    <div id="app"></div>
+    <!-- mian.ts 单点入口 整理依赖关系 Vue App.vue -->
+    <!-- App.vue 依赖 Vue Vuerouter router-view  -->
+    <!-- ESMoule 较新，告诉浏览器支持用ESMoudle来解析文件的依赖关系 main.js中可以使用import -->
+    <!-- vite比传统webpack工程化工具更快更优秀的地方,不需要转成require -->
+    <script src="/src/main.js" type="module">
+
+    </script>
+</body>
+</html>
