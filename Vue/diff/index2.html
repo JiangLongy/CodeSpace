@@ -14,13 +14,13 @@
            <li v-for="(item,index) in list" :key="index">{{item}}</li>
        </ul>
        <button @click="change">change</button>
-       <button @click="add">add</button></button>
+       <!-- <button @click="add">add</button></button> -->
     </div>
     <script>
         const { createApp, ref } = Vue
         createApp({
             setup() {
-               const list = ref(['唱','跳','rap','篮球'])
+               const list = ref(['vue','js','html'])
                const change = ()=>{
                 list.value.reverse()
                }

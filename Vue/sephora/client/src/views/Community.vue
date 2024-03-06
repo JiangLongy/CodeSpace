@@ -37,9 +37,9 @@
     </div>
 
     <!-- 循环文章 -->
-    <div v-if="true" class=" h-full pt-2 pl-2 pr-2 columns-2 pb-[50px] bg-slate-50">
+    <div v-if="true" class=" h-full pt-2 pl-2 pr-2 columns-2 pb-[50px]  bg-slate-50">
       <!-- 每一篇文章 -->
-      <div class="mb-3 h-full bg-white" v-for="item in store.data" :key="item.id"  v-if="store.data.length" @click="getNoteDetail(item.id)">
+      <div class="mb-3 w-50% bg-white break-inside-avoid" v-for="item in store.data" :key="item.id"  v-if="store.data.length" @click="getNoteDetail(item.id)">
         <img :src="item.head_image" alt=""
           class="w-full h-full rounded-t-md">
         <div class="mt-1 mb-1 text-sm">{{ item.title }}</div>

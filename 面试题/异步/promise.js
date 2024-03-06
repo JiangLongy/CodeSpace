@@ -85,9 +85,13 @@ class MyPromise{
         return new MyPromise((resolve,reject)=>{
             //判断promises里面哪个对象的状态先变更
             for(let promise of promises){
-                promise.then((value)=>{
+                promise.then(
+                    (value)=>{
                    resolve(value)
-                })              
+                    },(reject)=>{
+                        reject(reason)
+                    }
+                )              
             }
         })
     }
@@ -106,6 +110,26 @@ class MyPromise{
                     },
                     (reason)=>{
                         reject(reason)
+                    }
+                )
+            }
+        })
+    }
+    static any(promises){
+        return new MyPromise((resolve,reject)=>{
+            let count = 0;
+            let errors = []
+            for(let i=0 ; i< promises.length;i++){
+                promises[i].then(
+                    (value)=>{                    
+                        resolve(value)
+                    },
+                    (reason)=>{
+                        count++
+                        errors[i] = reason
+                        if(count === promises.length){
+                            reject(new AggregateError(errors))
+                        }
                     }
                 )
             }

@@ -7,7 +7,7 @@
 盒子总宽度: width + padding + border + margin
 
 3. 怪异盒模型(IE)
-盒子总宽度：width+padding
+盒子总宽度：width + margin
 
 设置 box-sizing: border-box; 此时以IE盒模型来加载容器
 
@@ -44,6 +44,19 @@ css像素 === 1px
 dpr(设备像素比) === 设备像素 / 设备独立像素
 ppi === 像素的密度
 
+# css3新增了哪些属性
+1. 选择器：属性选择器、伪类选择器
+2. box-shadow
+3. background-clip 裁剪
+4. transition 过渡动画
+5. transform
+6. animation 纯动画
+7. 渐变色 linear-gradient
+
+# css3中常见的动画有哪些？怎么实现？
+1. transition 当其他属性值发生变更时，控制该值变更所花费的时间和变更曲线
+2. transform  用于做容器的旋转、缩放、倾斜、平移等动画
+3. animation 控制容器动画的关键帧
 
 # css中有哪些方式可以隐藏页面元素？区别是什么？
 

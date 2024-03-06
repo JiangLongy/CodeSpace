@@ -5,13 +5,12 @@ function request(num){
         },1000)
     })
 }
-
-// async function test(){
-//     let res1 = await request(1)
-//     let res2 = await request(10)
-//     console.log(res1,res2);
-// }
-// test()
+async function test(){
+    let res1 = await request(1)
+    let res2 = await request(10)
+    console.log(res1,res2);
+}
+test()
 
 function* gen(){
     const num1 = yield request(1)

@@ -13,6 +13,7 @@ const state = reactive({
   count: 1
 })
 const age = ref(18)
+console.log(age);
 // effect(() => {
 //   console.log(state.count)
 // },
