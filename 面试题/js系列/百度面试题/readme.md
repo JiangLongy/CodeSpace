@@ -61,10 +61,23 @@ a.pop()
 - 同源策略的目的是数据安全
 
 1. jsonp
-    1> ajax请求受同源策略的影响，但是<script> 上的src属性不受同源策略的影响，且该属性也会导致浏览器发送一个请求
-     // 1. 借助script的src属性给后端发送一个请求，且携带一个参数('callback')
-        // 2. 前端在window对象上添加了一个callback函数
-        // 3. 后端接收到这个参数'callback' 后，将要返回给前端的数据data和这个参数''callback'进行拼接成callback(data)并返回
-        // 4. 因为window上已经有一个callback函数，后端又返回了一个形如'callback(data)'的调用，浏览器会将该字符串执行成callback的调用
+    1> ajax请求受同源策略的影响，但是`<script>` 上的src属性不受同源策略的影响，且该属性也会导致浏览器发送一个请求
+      1. 借助script的src属性给后端发送一个请求，且携带一个参数('callback')
+      2. 前端在window对象上添加了一个callback函数
+      3. 后端接收到这个参数'callback' 后，将要返回给前端的数据data和这个参数''callback'进行拼接成callback(data)并返回
+      4. 因为window上已经有一个callback函数，后端又返回了一个形如'callback(data)'的调用，浏览器会将该字符串执行成callback的调用
     2> 缺点: 1. 必须要后端配和
-             2. 只能发送get请求 
+             2. 只能发送get请求 浏览器加载src默认是get请求
+
+2. Cors(Cross-Origin Resource Sharing) --后端通过设置响应头来告诉浏览器不要拒绝接收后端的响应
+
+
+3. node代理（vite 开发环境下生效）
+
+4. nginx代理 （类似Cors，白名单的配置） （生产环境下常用）
+
+5. domain (在iframe中，当父级页面和子级页面的子域不同时，通过设置document.domain= 'xx'，来将xx定位基础域，从而实现跨域)
+
+6. postMessage (在iframe中)
+
+
