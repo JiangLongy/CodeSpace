@@ -1,7 +1,6 @@
 //red 3s
 //yellow 2s
 //green 1s
-
 function red(){
     console.log('红');
 }
