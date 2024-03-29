@@ -18,3 +18,6 @@ function change(arr){
 }
 
 console.log(change(arr));
+
+// {a:1,b:2}=>[['a',1],['b',2]] 相互转换
+// str= '1,2,3-4,10' 判断区间是否合法 左边比右边大
