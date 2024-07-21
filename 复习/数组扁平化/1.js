@@ -7,8 +7,7 @@ function a(arr){
             res.push(...a(item))
         }else{
             res.push(item)
-        }
-       
+        } 
     }
     return res
 }

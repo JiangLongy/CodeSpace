@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    img {
+      width: 400px;
+      height: 400px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- <div class="img"> -->
+  <img data-src="https://www.mlito.com/wp-content/uploads/2018/03/bf478dbc95.jpg" alt="">
+  <img data-src="https://n.sinaimg.cn/sinacn10113/332/w1024h1708/20190806/3afd-iatixpm8624881.jpg" alt="">
+  <img data-src="https://img.keaitupian.cn/uploads/2020/12/08/273813a415dbe086179ec092b693e8bb.jpg" alt="">
+  <img
+    data-src="https://ts1.cn.mm.bing.net/th/id/R-C.ff9b2ea76881c1d4bdb393353159bafd?rik=Kj%2fYXAH3vZXdMQ&riu=http%3a%2f%2fn.sinaimg.cn%2fsinacn10106%2f716%2fw1081h1235%2f20190822%2ffc90-icmpfxc3377869.jpg&ehk=TK8kMU4X9ApTHlVj4i4ASkdX9Eea0vp5HlgPRTMULYU%3d&risl=&pid=ImgRaw&r=0"
+    alt="">
+  <img
+    data-src="https://ts1.cn.mm.bing.net/th/id/R-C.bf58c8c97426050fc1f1810478616edd?rik=vsUZwH2q%2fk21uA&riu=http%3a%2f%2fpic.bizhi360.com%2fbpic%2f89%2f9689_11.jpg&ehk=wyWGP30JUWW20E7YRnGwgU5dPZiJhYlRuio76yDhVJU%3d&risl=&pid=ImgRaw&r=0"
+    alt="">
+  <img data-src="https://www.mlito.com/wp-content/uploads/2018/03/bf478dbc95.jpg" alt="">
+  <img data-src="https://n.sinaimg.cn/sinacn10113/332/w1024h1708/20190806/3afd-iatixpm8624881.jpg" alt="">
+  <img data-src="https://img.keaitupian.cn/uploads/2020/12/08/273813a415dbe086179ec092b693e8bb.jpg" alt="">
+  <img
+    data-src="https://ts1.cn.mm.bing.net/th/id/R-C.ff9b2ea76881c1d4bdb393353159bafd?rik=Kj%2fYXAH3vZXdMQ&riu=http%3a%2f%2fn.sinaimg.cn%2fsinacn10106%2f716%2fw1081h1235%2f20190822%2ffc90-icmpfxc3377869.jpg&ehk=TK8kMU4X9ApTHlVj4i4ASkdX9Eea0vp5HlgPRTMULYU%3d&risl=&pid=ImgRaw&r=0"
+    alt="">
+  <img
+    data-src="https://ts1.cn.mm.bing.net/th/id/R-C.bf58c8c97426050fc1f1810478616edd?rik=vsUZwH2q%2fk21uA&riu=http%3a%2f%2fpic.bizhi360.com%2fbpic%2f89%2f9689_11.jpg&ehk=wyWGP30JUWW20E7YRnGwgU5dPZiJhYlRuio76yDhVJU%3d&risl=&pid=ImgRaw&r=0"
+    alt="">
+  <img data-src="https://www.mlito.com/wp-content/uploads/2018/03/bf478dbc95.jpg" alt="">
+  <img data-src="https://n.sinaimg.cn/sinacn10113/332/w1024h1708/20190806/3afd-iatixpm8624881.jpg" alt="">
+  <img data-src="https://img.keaitupian.cn/uploads/2020/12/08/273813a415dbe086179ec092b693e8bb.jpg" alt="">
+  <img
+    data-src="https://ts1.cn.mm.bing.net/th/id/R-C.ff9b2ea76881c1d4bdb393353159bafd?rik=Kj%2fYXAH3vZXdMQ&riu=http%3a%2f%2fn.sinaimg.cn%2fsinacn10106%2f716%2fw1081h1235%2f20190822%2ffc90-icmpfxc3377869.jpg&ehk=TK8kMU4X9ApTHlVj4i4ASkdX9Eea0vp5HlgPRTMULYU%3d&risl=&pid=ImgRaw&r=0"
+    alt="">
+  <img
+    data-src="https://ts1.cn.mm.bing.net/th/id/R-C.bf58c8c97426050fc1f1810478616edd?rik=vsUZwH2q%2fk21uA&riu=http%3a%2f%2fpic.bizhi360.com%2fbpic%2f89%2f9689_11.jpg&ehk=wyWGP30JUWW20E7YRnGwgU5dPZiJhYlRuio76yDhVJU%3d&risl=&pid=ImgRaw&r=0"
+    alt="">
+  <!-- </div> -->
+  <script>
+    const imgs = document.querySelectorAll('img');
+    const callback = entries=>{
+        console.log(entries);
+        entries.forEach(entry=>{
+            if(entry.isIntersecting){
+                const image = entry.target
+                const data_src = image.getAttribute('data-src')
+                image.setAttribute('src',data_src)
+                observer.unobserve(image)
+            }
+        })
+        console.log('懒加载触发')
+    }
+    const observer  = new IntersectionObserver(callback)
+    imgs.forEach(img=>{
+        observer.observe(img)
+    })
+  </script>
+</body>
+
+</html>

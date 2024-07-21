@@ -6,7 +6,7 @@ function bfs(root){
         console.log(currentNode.value);
         
         if(currentNode.children){
-            currentNode.children.array.forEach(child => {
+            currentNode.children.forEach(child => {
                 queue.push(child)
             });
         }

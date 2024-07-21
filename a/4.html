@@ -1,0 +1,25 @@
+<button id="btn1" onclick="clickFunction">查询</button>
+<p id="text1"></p>
+<script>
+var DOC=document;
+var clickFunction=function() {
+  var BTN=DOC.getElementById('#btn1');
+  var TEXT=DOC.getElementById('#text1')
+
+  var getUrlParam=function(k){
+      var url=window.location.href;
+      var params=url.split("&")
+      for(var i=0;i<params.length;i++){
+          var param = params[i].split("=");
+          if(k=param[0]){
+            return param[1]
+          }
+      }
+  }
+  getDataFromServer(function(d){
+      var obj=JSON.parse(d);
+      BTN.innerHTML="已查询";
+      TEXT.innerHTML=obj.data[0].text+" "+getUrlParam("text")
+  });
+}
+</script>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>搜索页 - Vue</title>
+    <script src="https://cdn.yyb.gtimg.com/exam/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app" class="main-container">
+      <div class="search-container">
+        <search-input v-model:value="keyword" class="input"></search-input>
+        <search-button></search-button>
+      </div>
+      
+      <div class="result-container">
+        搜索结果区
+      </div>
+    </div>
+    <script>
+      // 按钮组件
+      const searchButton = {
+        template: `
+          <button @click="$emit('search')">
+            搜索
+          </button>
+        `,
+      };
+
+      // 输入框组件
+      const searchInput = {
+        template: `
+          <input type="text" :value="value" @input="$emit('update:value', $event.target.value)" class="search-input"/>
+        `,
+        props: ['value'],
+      };
+
+      const { createApp } = Vue;
+      createApp({
+        data() {
+          return {
+            keyword: ''
+          }
+        },
+        components: {
+          searchButton,
+          searchInput,
+        },
+        methods: {
+          // 根据关键字搜索，获得结果列表，为方便考试随机生成结果，可假想为内部调用了搜索接口
+          searchByKeyword(keyword) {
+            const min = 3;
+            const max = 20;
+            const resultLength = Math.round((max - min) * Math.random()) + min;
+            return Array.from(Array(resultLength).keys()).map(() => ({
+              title: this.genRandomString(keyword, 5),
+              content: this.genRandomString(keyword, 20),
+            }));
+          },
+          // 根据关键字生成指定长度的随机字符串
+          genRandomString(keyword, length) {
+            const randomString = Array.from(Array(length).keys()).map(() => String.fromCodePoint(Math.round(Math.random() * 20901) + 19968)).join('');
+            const randomIndex = Math.floor(Math.random() * (randomString.length + 1));
+            return randomString.slice(0, randomIndex) + keyword + randomString.slice(randomIndex);
+          },
+          console(e){
+            console.log(e);
+          }
+        },
+      }).mount('#app');
+    </script>
+  </body>
+  <style>
+    .main-container {
+      display: flex;
+      align-items:center;
+      flex-direction: column;
+    }
+    .search-container, .result-container {
+      display: flex;
+      margin-top: 50px;
+    }
+    .search-input {
+      margin-right: 10px;
+      width: 300px;
+    }
+  </style>
+</html>

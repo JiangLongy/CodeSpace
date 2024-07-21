@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">搜索</button>
+    <script>
+        function search(){
+            let timer
+            return function(){
+                if(timer){
+                    clearTimeout(timer)                 
+                }
+                timer = setTimeout(()=>{
+                        console.log('搜索')
+                    },1000)            
+            }
+        }
+        document.getElementById('btn').onclick = search()
+    </script>
+</body>
+</html>

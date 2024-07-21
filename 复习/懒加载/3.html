@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 600px;
+            height: 50000px;
+            border: 1px solid black;
+        }
+        .child {
+            width: 50%;
+            height: 500px;
+            margin: 800px 200px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <div class="child"></div>
+    </div>
+    <script>
+        let box = document.getElementsByClassName('child')[0];
+        console.log(box.offsetTop);
+        console.log(box.offsetHeight);
+        window.onscroll = () => {
+            // let scrollTop = document.documentElement.scrollTop;
+            // console.log(scrollTop);
+        };
+    </script>
+</body>
+</html>

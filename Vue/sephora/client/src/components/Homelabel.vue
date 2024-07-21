@@ -14,7 +14,7 @@
                     class="ml-5 mr-5 h-10 flex flex-col justify-center shadow-lg rounded-md mt-n5 relative bg-white"
                     style="bottom: -10px; transform: translateY(-80%);">
                     <van-row gutter="150">
-                        <van-col span="8" class="ml-2 text-sm">Hi {{ username }}</van-col>
+                        <van-col span="8" class="ml-2 text-sm">Hi {{userInfo.name}}</van-col>
                         <van-col span="0" class="mr-2 text-xs float-right text-slate-400 mt-1">
                             花样玩转会员积分
                             <van-icon name="arrow" />
@@ -58,7 +58,7 @@ import { ref } from 'vue';
 
 const active = ref(0);
 const userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
-const username = userInfo.username
+const username = userInfo?.username
 
 const state = {
     kinds: [

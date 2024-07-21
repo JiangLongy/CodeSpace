@@ -54,9 +54,6 @@ function tokenizer(input) {
             val = ''
         }
     }
-
-    
-
 }
 // 解析template字符串
 function parse(template) {

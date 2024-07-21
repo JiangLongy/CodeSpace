@@ -8,7 +8,7 @@ function formatNumberWithCommas(number){
     // 封装内部函数 负责加入, 复用 整数部分和小数部分都要千分位
     const doSplit = (num,isInterger=true)=>{
         if(num === '' ) return ''
-        if(interger) num = num.split('').reverse();
+        if(isInterger) num = num.split('').reverse();
         let str = []
         for(let i = 0; i < num.length; i++){
             if(i%3 === 0 && i !== 0){
@@ -16,7 +16,7 @@ function formatNumberWithCommas(number){
             }
             str.push(num[i])
         }
-        if(isInterger) return str.reverse().join('')
+        if(!isInterger) return str.reverse().join('')
         return str.join('')
     }
     interger = doSplit(interger)
@@ -24,3 +24,5 @@ function formatNumberWithCommas(number){
     return interger + (decimal === ''? '' : '.' + decimal)
 
 }
+
+console.log(formatNumberWithCommas(1234567.226645254));

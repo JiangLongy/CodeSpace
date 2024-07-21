@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #root{
+            background-color: rgb(236, 126, 126);
+        }
+    </style>
+</head>
+<body>
+    <div id="root">div-root</div>
+    <div class="className">div-className1</div>
+    <div class="className">div-className2</div>
+    <div class="className">div-className3</div>
+    <div class="className">div-className4</div>
+
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+</body>
+<script>
+    //getElementById
+    let div = document.getElementById('root');
+    console.log(div);
+    // getElementsByClassName
+    let divClass = document.getElementsByClassName('className');
+    console.log(divClass);
+    Array.from(divClass).forEach(item=>{
+        console.log(item.outerHTML);
+    })
+    //getElementsByTagName
+    let ulTag = document.getElementsByTagName('ul');
+    let liList = document.getElementsByTagName('li');
+    console.log(ulTag);
+    console.log(liList);
+
+    // quarySeletor
+    let div1 = document.querySelector('#root');
+    console.log(div1);
+
+    //quarySeletorAll
+    let divs=document.querySelectorAll('.className');
+    console.log(divs);
+
+    //createElement appendChild 
+    let div2 = document.querySelector('#root')
+    let div3 = document.createElement('div');
+    div3.innerHTML = '杨佳丽shazi';
+    div2.appendChild(div3);
+
+    // removeChild
+    // let ul = document.querySelector('ul');
+    // let li = document.querySelectorAll('li');
+    // for(let i=0;i<li.length;i++){
+    //     ul.removeChild(li[i]);
+    // }
+    console.log(div2.innerHTML);
+    console.log(div2.textContent);
+</script>
+</html>

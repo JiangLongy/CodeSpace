@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    img {
+      width: 400px;
+      height: 400px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- <div class="img"> -->
+  <img data-src="https://www.mlito.com/wp-content/uploads/2018/03/bf478dbc95.jpg" alt="">
+  <img data-src="https://n.sinaimg.cn/sinacn10113/332/w1024h1708/20190806/3afd-iatixpm8624881.jpg" alt="">
+  <img data-src="https://img.keaitupian.cn/uploads/2020/12/08/273813a415dbe086179ec092b693e8bb.jpg" alt="">
+  <img
+    data-src="https://ts1.cn.mm.bing.net/th/id/R-C.ff9b2ea76881c1d4bdb393353159bafd?rik=Kj%2fYXAH3vZXdMQ&riu=http%3a%2f%2fn.sinaimg.cn%2fsinacn10106%2f716%2fw1081h1235%2f20190822%2ffc90-icmpfxc3377869.jpg&ehk=TK8kMU4X9ApTHlVj4i4ASkdX9Eea0vp5HlgPRTMULYU%3d&risl=&pid=ImgRaw&r=0"
+    alt="">
+  <img
+    data-src="https://ts1.cn.mm.bing.net/th/id/R-C.bf58c8c97426050fc1f1810478616edd?rik=vsUZwH2q%2fk21uA&riu=http%3a%2f%2fpic.bizhi360.com%2fbpic%2f89%2f9689_11.jpg&ehk=wyWGP30JUWW20E7YRnGwgU5dPZiJhYlRuio76yDhVJU%3d&risl=&pid=ImgRaw&r=0"
+    alt="">
+  <img data-src="https://www.mlito.com/wp-content/uploads/2018/03/bf478dbc95.jpg" alt="">
+  <img data-src="https://n.sinaimg.cn/sinacn10113/332/w1024h1708/20190806/3afd-iatixpm8624881.jpg" alt="">
+  <img data-src="https://img.keaitupian.cn/uploads/2020/12/08/273813a415dbe086179ec092b693e8bb.jpg" alt="">
+  <img
+    data-src="https://ts1.cn.mm.bing.net/th/id/R-C.ff9b2ea76881c1d4bdb393353159bafd?rik=Kj%2fYXAH3vZXdMQ&riu=http%3a%2f%2fn.sinaimg.cn%2fsinacn10106%2f716%2fw1081h1235%2f20190822%2ffc90-icmpfxc3377869.jpg&ehk=TK8kMU4X9ApTHlVj4i4ASkdX9Eea0vp5HlgPRTMULYU%3d&risl=&pid=ImgRaw&r=0"
+    alt="">
+  <img
+    data-src="https://ts1.cn.mm.bing.net/th/id/R-C.bf58c8c97426050fc1f1810478616edd?rik=vsUZwH2q%2fk21uA&riu=http%3a%2f%2fpic.bizhi360.com%2fbpic%2f89%2f9689_11.jpg&ehk=wyWGP30JUWW20E7YRnGwgU5dPZiJhYlRuio76yDhVJU%3d&risl=&pid=ImgRaw&r=0"
+    alt="">
+  <img data-src="https://www.mlito.com/wp-content/uploads/2018/03/bf478dbc95.jpg" alt="">
+  <img data-src="https://n.sinaimg.cn/sinacn10113/332/w1024h1708/20190806/3afd-iatixpm8624881.jpg" alt="">
+  <img data-src="https://img.keaitupian.cn/uploads/2020/12/08/273813a415dbe086179ec092b693e8bb.jpg" alt="">
+  <img
+    data-src="https://ts1.cn.mm.bing.net/th/id/R-C.ff9b2ea76881c1d4bdb393353159bafd?rik=Kj%2fYXAH3vZXdMQ&riu=http%3a%2f%2fn.sinaimg.cn%2fsinacn10106%2f716%2fw1081h1235%2f20190822%2ffc90-icmpfxc3377869.jpg&ehk=TK8kMU4X9ApTHlVj4i4ASkdX9Eea0vp5HlgPRTMULYU%3d&risl=&pid=ImgRaw&r=0"
+    alt="">
+  <img
+    data-src="https://ts1.cn.mm.bing.net/th/id/R-C.bf58c8c97426050fc1f1810478616edd?rik=vsUZwH2q%2fk21uA&riu=http%3a%2f%2fpic.bizhi360.com%2fbpic%2f89%2f9689_11.jpg&ehk=wyWGP30JUWW20E7YRnGwgU5dPZiJhYlRuio76yDhVJU%3d&risl=&pid=ImgRaw&r=0"
+    alt="">
+  <!-- </div> -->
+  <script>
+    // 方法一
+    const imgs = document.getElementsByTagName('img');
+    function lazyLoad(imgs) {
+      console.log('懒加载被触发了！')
+      // 浏览器可视窗口的高度；
+      const windowHeight = window.innerHeight;
+      // 可视窗口滚动过的距离；
+      const scrollHeight = document.documentElement.scrollTop;
+      for (let i = 0; i < imgs.length; i++) {
+        // 根据我们先前讲解过的是否可视逻辑进行判断；
+        // !imgs[i].src 是当该图片已加载好之后，无需重复加载
+        if (windowHeight + scrollHeight > imgs[i].offsetTop && !imgs[i].src && imgs[i].offsetTop + imgs[i].offsetHeight > scrollHeight) {
+          // 使用data-xx的自定义属性可以通过dom元素的dataset.xx取得；
+          imgs[i].src = imgs[i].dataset.src;
+        }
+      }
+    };
+    // 进入页面时执行一次加载；
+    lazyLoad(imgs);
+    // 节流
+    function throttle(fn,delay,...arg){
+      let timer = null;
+      return ()=>{
+        let that = this
+        if(!timer){
+          timer = setTimeout(()=>{
+            fn.apply(that,arg)
+            timer = null
+          },delay)
+        }
+      }
+    }
+    // 监听滚动事件，进行图片懒加载；
+    window.onscroll = throttle(lazyLoad, 500, imgs);
+  </script>
+</body>
+
+</html>

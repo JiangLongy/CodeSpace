@@ -27,7 +27,6 @@ function uniqueArr(arr) {
         break;
       }
     }
-
     if (!isFind) res.push(item);
   }
   return res

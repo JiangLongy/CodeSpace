@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="container"></div>
+    <script>
+        let now = new Date();
+        const total = 10000
+        let ul = document.createElement('ul');
+        let div = document.getElementById('container');
+        div.appendChild(ul);
+        for(let i = 0;i<total;i++){
+            let li = document.createElement('li');
+            li.innerText = ~~(Math.random()*total);
+            ul.appendChild(li);
+        }
+    </script>
+</body>
+</html>

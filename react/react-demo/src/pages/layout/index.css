@@ -1,0 +1,26 @@
+.layout{
+    width: 100vw;
+    height: 100vh;
+}
+.ant-layout{
+    height: 100%;
+}
+.hd{
+    display: flex;
+    justify-content: space-between;
+    color: white;
+}
+.side{
+    color: white;
+}
+.aside-item{
+    text-align: center;
+    padding: 10px 0;
+    cursor: pointer;
+}
+.aside-item:hover{
+    background-color: #4c9ae4;
+}
+.aside-item:active{
+    background-color: #4c9ae4;
+}

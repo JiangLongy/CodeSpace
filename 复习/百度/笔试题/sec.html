@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .search {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .input {
+            width: 20vw;
+            height: 25px;
+        }
+
+        .button {
+            height: 30px;
+            width: 40px;
+        }
+
+        .content {
+            padding: 20px 25%;
+        }
+
+        .list {
+            display: flex;
+            align-items: center;
+            height: 40px;
+            justify-content: space-between;
+        }
+
+        .list-button {
+            width: 65px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .add-button {
+            background-color: rgb(36, 118, 226);
+            color: white;
+            border-radius: 20px;
+            font-size: 12px;
+            padding: 10px 20px;
+        }
+
+        .add-button:hover {
+            background-color: rgb(121, 121, 238);
+        }
+
+        .add-button-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .title {
+            display: flex;
+            justify-content: center;
+            margin: 10px 0;
+        }
+
+        .textarea {
+            width: 100%;
+            height: 400px;
+        }
+
+        .noteContent {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="search">
+            <input type="text" class="input" v-model="keyword" placeholder="请输入关键字">
+            <button class="button" @click="search">搜索</button>
+        </div>
+
+        <div class="content">
+            <h4>笔记列表</h4>
+            <ul>
+                <li v-for="(item,index) in showList" :key="item.id" class="list">
+                    <div class="title" @click="getContent(item)">{{item.title}}</div>
+                    <div class="list-button">
+                        <button @click="goDetail(item)">编辑</button>
+                        <button @click="deleteNote(item.id)">删除</button>
+                    </div>
+
+                </li>
+            </ul>
+            <div class="add-button-box">
+                <div class="add-button" @click="goDetail()">添加笔记</div>
+            </div>
+            <!-- 编辑 -->
+            <div class="noteDetail" v-show="showNoteDetail">
+                <!-- 标题 -->
+                <div class="title">
+                    <h4>笔记标题: </h4>
+                    <input type="text" v-model="note.title">
+                </div>
+                <!-- 内容 -->
+                <div class="noteContent">
+                    <textarea v-model="note.content" class="textarea"></textarea>
+                </div>
+                <div class="add-button-box ">
+                    <div class="add-button" @click="saveNote">
+                        保存
+                    </div>
+                </div>
+
+            </div>
+            <!-- 展示 -->
+            <div v-show="showContent">
+                <div class="title">{{ note.title }}</div>
+                <div class="noteContent">{{ note.content }}</div>
+
+            </div>
+        </div>
+
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+        const { createApp, ref, onBeforeMount, watch, computed } = Vue
+        createApp({
+            setup() {
+                const showNoteDetail = ref(false)
+                const detailNote = ref(null)
+                const keyword = ref('')
+                const showContent = ref(false)
+                const note = ref({
+                    id: null,
+                    title: null,
+                    content: null
+                })
+                const noteList = ref([
+                    {
+                        id: 0,
+                        title: '标题1',
+                        content: '内容1'
+                    }
+                    ,
+                    {
+                        id: 1,
+                        title: '标题2',
+                        content: '内容2'
+                    }
+                    ,
+                    {
+                        id: 2,
+                        title: '标题3',
+                        content: '内容3'
+                    },
+                    {
+                        id: 3,
+                        title: '标题4',
+                        content: '内容4'
+                    }
+                ])
+                // const showList = ref(noteList.value)
+                const showList = computed(() => {
+                    return noteList.value.filter(item => item.title.includes(keyword.value))
+                })
+                // 加载数据
+                const loadNotes = () => {
+                    const savedNotes = sessionStorage.getItem('notes')
+                    if (savedNotes) {
+                        noteList.value = JSON.parse(savedNotes)
+                    }
+                }
+
+                // 保存数据
+                const saveNotes = () => {
+                    sessionStorage.setItem('notes', JSON.stringify(noteList.value))
+                }
+
+                // 在挂载之前加载数据
+                onBeforeMount(loadNotes)
+
+                // 监听 noteList 的变化，保存数据
+                watch(noteList, () => {
+                    saveNotes()
+                }, { deep: true })
+                //删除
+                const deleteNote = (id) => {
+                    noteList.value = noteList.value.filter(item => item.id !== id)
+                }
+                //搜索
+                const search = () => {
+                    let res = []
+                    noteList.value.forEach((item) => {
+                        if (item.title.includes(keyword.value)) {
+                            res.push(item)
+                        }
+                    })
+                    showList.value = noteList.value.filter(item => item.title.includes(keyword.value))
+                    console.log(showList.value);
+                }
+                //查看
+                const getContent = (item) => {
+                    showContent.value = true
+                    showNoteDetail.value = false
+                    note.value = item
+                }
+                //编辑或者添加笔记 复用
+                const goDetail = (item) => {
+                    if (item) {
+                        note.value.id = item.id
+                        note.value.title = item.title
+                        note.value.content = item.content
+                    } else {
+                        note.value.id = null
+                        note.value.title = null
+                        note.value.content = null
+                    }
+                    showContent.value = false
+                    showNoteDetail.value = true
+                }
+                // 保存笔记
+                const saveNote = () => {
+                    if (note.value.id === null) {
+                        noteList.value.push({
+                            id: Date.now(),
+                            title: note.value.title,
+                            content: note.value.content
+                        })
+                    } else {
+                        noteList.value.forEach(item => {
+                            console.log(item, note.value.id);
+                            if (item.id === note.value.id) {
+                                console.log(1111);
+                                item.title = note.value.title
+                                item.content = note.value.content
+                            }
+                        })
+                    }
+                    showNoteDetail.value = false
+                }
+
+                watch(noteList, () => {
+                    saveNotes()
+                }, { deep: true })
+                return {
+                    noteList,
+                    deleteNote,
+                    keyword,
+                    search,
+                    showList,
+                    showNoteDetail,
+                    detailNote,
+                    goDetail,
+                    note,
+                    saveNote,
+                    getContent,
+                    showContent
+                }
+            }
+        }).mount('#app')
+
+    </script>
+
+</body>
+
+</html>

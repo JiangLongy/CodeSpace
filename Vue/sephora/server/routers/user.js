@@ -1,4 +1,5 @@
 const Router = require('@koa/router')
+const jwt = require('../utils/jwt.js')
 
 const router = new Router()
 const { userLogin,userFind,userRegister} = require('../controllers/mysqlControl')
@@ -7,11 +8,13 @@ const { userLogin,userFind,userRegister} = require('../controllers/mysqlControl'
 router.post('/login',async (ctx)=>{
     // 获取到前端传递的账号和密码，去数据库中校验账号密码的正确性
     const {username,password} = ctx.request.body
+    
     console.log(username,password);
     try{
         const result = await userLogin(username,password)
         // console.log(result);
         if(result.length){//账号密码存在
+            let jwtToken = jwt.sign({id:'1',username:result[0].username,admin:true})
             let data = {
                 id:result[0].id,
                 nickname:result[0].nickname,
@@ -20,7 +23,8 @@ router.post('/login',async (ctx)=>{
             ctx.body = {
                 code:'8000',
                 data:data,
-                msg:'登录成功'
+                msg:'登录成功',
+                token:jwtToken
             }
         }else{
             ctx.body = {
